@@ -19,9 +19,12 @@ app.post("/api/transaction", async (req, res) => {
   console.log("Updated Transactions:", transactions);
 
   try {
-    await axios.post("http://localhost:5001/api/transactions", {
-      transactions,
-    });
+    await axios.post(
+      "https://trading-protocol-website2.onrender.com/api/transactions",
+      {
+        transactions,
+      }
+    );
     res.status(200).json({ message: "Transaction sent!", transactions });
   } catch (error) {
     console.error("Error sending transaction:", error);
@@ -33,4 +36,6 @@ app.get("/api/transactions", (req, res) => {
   res.json({ transactions });
 });
 
-app.listen(5000, () => console.log("🚀 Website 1 Backend running on port 5000"));
+app.listen(5000, () =>
+  console.log("🚀 Website 1 Backend running on port 5000")
+);
